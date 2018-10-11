@@ -23,29 +23,38 @@ class HandyDandy
 	function __construct(){
 		add_action('init', array( $this, 'custom_post_type')); 
 	}
-	function activate(){
-		flush_rewrite_rules();	
-	}
-	function deactivate(){
-			
-		flush_rewrite_rules();	
-	}
-	function uninstall(){
+//	function activate(){
+//		$this->custom_post_type();
+//		flush_rewrite_rules();	
+//	}
+//	function deactivate(){
+//			
+//		flush_rewrite_rules();	
+//	}
 		
+	function register(){
+		add_action( 'admin_enqueue_scripts', array ($this, 'enqueue'));
 	}
 	function custom_post_type(){
 		register_post_type( 'book', ['public' => 'true','label' => 'Books']);
 	}
+	function enqueue() {
+		wp_enqueue_style( 'handystyle', plugins_url('/assets/handystyle.css',__FILE__));
+		wp_enqueue_script( 'handyscript', plugins_url('/assets/cool.js',__FILE__));
+	}
 }
 if (class_exists('HandyDandy')){
 	$handy_var = new HandyDandy();
+	$handy_var->register();
 }
 
 //activation
-register_activation_hook( __FILE__, array( $handy_var, 'activate'));
+require_once plugin_dir_path( __FILE__) . 'inc/handy-plugin-activate.php';
+register_activation_hook( __FILE__, array( 'HandyPluginActivate', 'activate'));
 
 //deactivation
-
-register_deactivation_hook( __FILE__, array( $handy_var, 'deactivate'));
+require_once plugin_dir_path( __FILE__) . 'inc/handy-plugin-deactivate.php';
+register_deactivation_hook( __FILE__, array( 'HandyPluginDeactivate', 'deactivate'));
 
 //uninstall
+//uninstall.php
