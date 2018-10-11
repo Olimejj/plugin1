@@ -1,0 +1,8 @@
+/*trying to make actions on new lines */
+/*.mepr-account-row-action.mepr-account-update, .mepr-open-upgrade-popup.mepr-account-row-action.mepr-account-upgrade {*/
+.mepr-account-actions a{
+  margin-top: 5px !important;
+  padding: 10px 20px 10px 20px !important;
+  background-color: lightblue !important;
+  display:inline-block;
+}
