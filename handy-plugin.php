@@ -18,7 +18,7 @@ if(! defined('ABSPATH')){
 	die("You are not allowed to access this page directly");
 }
 if (file_exists( dirname(__FILE__) . '/vendor/autoload.php')){
-	require_once dirname(__FILE__).'vendor/outoload.php';
+	require_once dirname(__FILE__).'/vendor/autoload.php';
 }
 use Inc\Activate;
 use Inc\Deactivate;
