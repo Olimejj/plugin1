@@ -17,6 +17,12 @@ Text Domain: handy-plugin
 if(! defined('ABSPATH')){
 	die("You are not allowed to access this page directly");
 }
+if (file_exists( dirname(__FILE__) . '/vendor/autoload.php')){
+	require_once dirname(__FILE__).'vendor/outoload.php';
+}
+use Inc\Activate;
+use Inc\Deactivate;
+
 
 class HandyDandy
 {
@@ -27,14 +33,14 @@ class HandyDandy
 		add_action('init', array( $this, 'custom_post_type')); 
 		$this->name = plugin_basename(__FILE__);
 	}
-//	function activate(){
-//		$this->custom_post_type();
-//		flush_rewrite_rules();	
-//	}
-//	function deactivate(){
-//			
-//		flush_rewrite_rules();	
-//	}
+	function activate(){
+		Activate::activate();
+		
+	}
+	function deactivate(){
+		Deactivate::deactivate();
+		
+	}
 		
 	function register(){
 		add_action( 'admin_enqueue_scripts', array ($this, 'enqueue'));
@@ -68,12 +74,10 @@ if (class_exists('HandyDandy')){
 }
 
 //activation
-require_once plugin_dir_path( __FILE__) . 'inc/handy-plugin-activate.php';
-register_activation_hook( __FILE__, array( 'HandyPluginActivate', 'activate'));
+register_activation_hook( __FILE__, array( 'Activate', 'activate'));
 
 //deactivation
-require_once plugin_dir_path( __FILE__) . 'inc/handy-plugin-deactivate.php';
-register_deactivation_hook( __FILE__, array( 'HandyPluginDeactivate', 'deactivate'));
+register_deactivation_hook( __FILE__, array( 'Deactivate', 'deactivate'));
 
 //uninstall
 //uninstall.php

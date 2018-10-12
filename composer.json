@@ -1,0 +1,19 @@
+{
+    "name": "j.j.oliphant/handy-plugin",
+    "description": "A handy stripe plugin",
+    "type": "project",
+    "require": {
+        "stripe/stripe-php": "6.19"
+    },
+    "autoload": {
+        "psr-4": {"Inc\\": "./inc"}
+    },
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "olimejj",
+            "email": "olimejj@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}

@@ -2,8 +2,8 @@
 /**
 *@package HandyPlugin
 */
-
-class HandyPluginDeactivate
+namespace Inc;
+class Deactivate
 {
 	public static function deactivate(){
 		flush_rewrite_rules();
