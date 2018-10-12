@@ -18,7 +18,7 @@ if(! defined('ABSPATH')){
 	die("You are not allowed to access this page directly");
 }
 if (file_exists( dirname(__FILE__) . '/vendor/autoload.php')){
-	require_once dirname(__FILE__).'/vendor/autoload.php';
+	require_once dirname(__FILE__).'vendor/outoload.php';
 }
 use Inc\Activate;
 use Inc\Deactivate;
@@ -74,10 +74,10 @@ if (class_exists('HandyDandy')){
 }
 
 //activation
-register_activation_hook( __FILE__, array( 'Activate', 'activate'));
+register_activation_hook( __FILE__, array($handy_var, 'activate'));
 
 //deactivation
-register_deactivation_hook( __FILE__, array( 'Deactivate', 'deactivate'));
+register_deactivation_hook( __FILE__, array( $handy_var, 'deactivate'));
 
 //uninstall
 //uninstall.php
