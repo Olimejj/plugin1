@@ -41,6 +41,8 @@ class HandyDandy
 	}
 	public function admin_index(){
 		
+		require_once plugin_dir_path( __FILE__) . 'templates/admin.php';
+		
 	}
 	function custom_post_type(){
 		register_post_type( 'book', ['public' => 'true','label' => 'Books']);
