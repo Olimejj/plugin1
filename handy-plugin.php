@@ -20,8 +20,12 @@ if(! defined('ABSPATH')){
 
 class HandyDandy
 {
+
+	public $name;
+	
 	function __construct(){
 		add_action('init', array( $this, 'custom_post_type')); 
+		$this->name = plugin_basename(__FILE__);
 	}
 //	function activate(){
 //		$this->custom_post_type();
@@ -35,6 +39,12 @@ class HandyDandy
 	function register(){
 		add_action( 'admin_enqueue_scripts', array ($this, 'enqueue'));
 		add_action('admin_menu', array( $this , 'add_admin_pages'));
+		add_filter("plugin_action_links_$this->name",array($this, 'settings_link'));
+	}
+	function settings_link($links){
+		$settings_link = '<a href="admin.php?page=handy_plugin">Settings</a>';
+		array_push($links, $settings_link);
+		return $links;
 	}
 	public function add_admin_pages(){
 		add_menu_page( 'Handy Plugin', 'Handy', 'manage_options','handy_plugin', array( $this, 'admin_index'),'dashicons-store', 100);
