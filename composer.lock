@@ -1,9 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+    "hash": "c1967d3a1a002286681762a2bb944fcd",
     "content-hash": "c6be79493fe492da812c83e7d347ad88",
     "packages": [
         {
@@ -59,7 +60,7 @@
                 "payment processing",
                 "stripe"
             ],
-            "time": "2018-09-24T23:09:04+00:00"
+            "time": "2018-09-24 23:09:04"
         }
     ],
     "packages-dev": [],
